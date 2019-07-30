@@ -148,6 +148,71 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/30/hello-world/">Hello World</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/30/hello-world/" class="archive-article-date">
+  	<time datetime="2019-07-30T10:17:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+        
+          <a class="article-more-a" href="/2019/07/30/hello-world/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/30/hello-world/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-快速幂" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -168,21 +233,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <pre><code>在很多的ACM题中都会涉及到对数据快速运算的要求,快速运算在节省运行时间方面很多方面都能起到关键性的作用,学会快速幂也很用必要. 在求 `逆元` </code></pre><h1 id="a-b-p-问题"><a href="#a-b-p-问题" class="headerlink" title="[a^b%p] 问题"></a>[a^b%p] 问题</h1><h2 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a>快速幂</h2><ul>
-<li><p>模板 </p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">求 a 的 b 次方对 p 取模的值</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pow</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans =  <span class="number">1</span> % p;</span><br><span class="line">    <span class="keyword">for</span>(b; b; b&gt;&gt;=<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(b&amp;<span class="number">1</span>) ans = (<span class="keyword">long</span> <span class="keyword">long</span> )ans * a % p;</span><br><span class="line">        a = (<span class="keyword">long</span> <span class="keyword">long</span>) a * a % p; <span class="comment">//权 </span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>   核心为幂的分解,如 幂 10 = 2+8 =0<em>2^0+1</em>2^1+0<em>2^2+1</em>2^3  (1001)<br>   采用位运算,对b进行二进制分解求积,权动态变化,当取位取到1时,求积.</p>
-</li>
-</ul>
-<h1 id="a-b-p-问题-1"><a href="#a-b-p-问题-1" class="headerlink" title="[a*b%p] 问题"></a>[a*b%p] 问题</h1><h2 id="快速积"><a href="#快速积" class="headerlink" title="快速积"></a>快速积</h2><ul>
-<li><p>模板</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">求 a 乘 b 对 p 取模的值</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function">LL <span class="title">mod</span><span class="params">(LL a,LL b,LL p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    LL ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(;b;b&gt;&gt;=<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(b&amp;<span class="number">1</span>) ans = (ans + a) % p;</span><br><span class="line">        a = a * <span class="number">2</span> % p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>  核心为积的分解, a<em>10 = a</em>(2+8) = a<em>(0</em>2^0+1<em>2^1+0</em>2^2+1*2^3) 与快速幂同理</p>
-</li>
-</ul>
-
+        <p>在很多的ACM题中都会涉及到对数据快速运算的要求,快速运算在节省运行时间方面很多方面都能起到关键性的作用,学会快速幂也很用必要. 在求 <code>逆元</code> 的时候也会有经常用到.</p>
+        
+          <a class="article-more-a" href="/2019/07/30/快速幂/#more">more >></a>
+        
       
 
       
@@ -255,73 +309,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h1><h2 id="容器基本功能与分类"><a href="#容器基本功能与分类" class="headerlink" title="容器基本功能与分类"></a>容器基本功能与分类</h2><h3 id="一、标准容器"><a href="#一、标准容器" class="headerlink" title="一、标准容器"></a>一、标准容器</h3><p><code>容器是存储其他对象(其元素)的集合的持有者对象。</code><br>它们作为类模板实现,这使得作为元素支持的类型具有极大的灵活性。<br>容器管理其元素的存储空间,并提供成员函数直接或通过<code>迭代器(iterator)</code>(具有指针类似属性的引用对象)访问它们。<br><br><br>容器复制在编程中非常常用的结构:<code>动态数组(矢量)</code>、<code>队列(队列)</code>、<code>堆栈(堆栈)</code>、<code>堆(优先级_队列)</code>、<code>链接列表(列表)</code>、<code>树 (集)</code>, <code>关联数组 (映射)</code> …<br><br><br>许多容器具有多个共同的成员功能,并且共享功能。决定为特定需求使用哪种类型的容器通常不仅取决于容器提供的功能,还取决于其某些成员的效率(复杂性)。对于序列容器尤其如此,在插入/删除元素和访问它们之间提供了不同的复杂权衡。<br><br><br>    堆栈、队列和优先级队列作为容器适配器实现。容器适配器不是完整的容器类,而是提供特定接口的类,它依赖于容器类之一(如deque或列表)的对象来处理元素。 基础容器的 封装方式使其元素由容器适配器的成员访问,而不受使用的基础容器类的影响。<br><br></p>
-<p>设<code>S</code>表示一种容器类型<code>(例如vector&lt;int&gt;)</code>，<code>s1</code>和<code>s2</code>都是<code>S</code>类型实例，容器支持基本功能如下:<br></p>
-<ul>
-<li>S s1<br>容器都有一个默认构造函数，用于构造一个没有任何元素的空容器,其元素可在后续插入。</li>
-<li>s1 op s2<br>这里op可以是<code>==,!=,&lt;,&lt;=,&gt;,&gt;=</code>之一，他会对两个容器之间元素按字典序进行比较</li>
-<li>s1.begin()<br>返回指向s1第一个元素的迭代器</li>
-<li>s1.end()<br>返回指向s1最后一个元素的下一个位置的迭代器</li>
-<li>s1.clear()<br>将容器s1内容清空</li>
-<li>s1.empty()<br>返回一个<code>bool</code>值，表示s1容器是否为空。<blockquote>
-<p>当为以下情况时返回<code>true</code><br><br>“” (空字符串)<br><br>0 (作为整数的0)<br><br>0.0 (作为浮点数的0)<br><br>“0” (作为字符串的0)<br><br>NULL<br><br>FALSE<br><br>array() (一个空数组)<br><br>$var; (一个声明了，但是没有值的变量)<br></p>
-</blockquote>
-</li>
-</ul>
-<h3 id="二、顺序容器"><a href="#二、顺序容器" class="headerlink" title="二、顺序容器"></a>二、顺序容器</h3><pre><code>STL中包含的顺序容器包括`向量(vector)`、`双端队列(deque)`和`列表(list)`,在逻辑上可以看作是一个
-长度可以扩展的数组,容器中的元素都线性排列。程序员可随意决定每个元素在容器中的位置，可以随时向指
-定位置插入新元素和删除已有的元素。</code></pre><h4 id="一、向量-vector"><a href="#一、向量-vector" class="headerlink" title="一、向量 vector"></a>一、向量 vector</h4><pre><code>&quot;vector&quot; 可以看做是动态的数组。</code></pre><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;vec;</span><br><span class="line"></span><br><span class="line">vec.push_back(<span class="number">2</span>);<span class="comment">//尾部插入数字2,即 vec[0]=2</span></span><br><span class="line"></span><br><span class="line">vec.push_back(<span class="number">4</span>);<span class="comment">//尾部插入数字4,即 vec[1]=4</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> Size = vec.size();<span class="comment">//容器中存放数字的个数</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt; vec[<span class="number">1</span>] &lt;&lt;<span class="built_in">endl</span>;<span class="comment">//访问第二个数字，即4</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; vec.size(); ++ i)<span class="comment">//按照下标遍历元素,此时vec[0]=2  vec[1]=4</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt; vec[i] &lt;&lt; <span class="string">" "</span>;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator it;<span class="comment">//按照迭代器遍历元素</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(it = vec.begin(); it != vec.end(); ++ it)</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt; *it &lt;&lt;<span class="string">" "</span>;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">vec.insert(vec.begin() + <span class="number">1</span>, <span class="number">6</span>);<span class="comment">//在第二个位置上插入元素6，即vec[1]=6</span></span><br><span class="line"></span><br><span class="line">vec.erase(vec.begin() + <span class="number">1</span>);<span class="comment">//删除第二个位置上的元素</span></span><br><span class="line"></span><br><span class="line">vec.clear();<span class="comment">//把容器中的元素全部清除</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//vector-----------------</span></span><br><span class="line"></span><br><span class="line">   <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;v;</span><br><span class="line"></span><br><span class="line">   v.erase(v.begin() + <span class="number">2</span>);<span class="comment">//删除第2个元素，从0开始计数</span></span><br><span class="line"></span><br><span class="line">   v.erase(v.begin() + <span class="number">1</span>, v.begin() + <span class="number">5</span>);<span class="comment">//删除第1到第5个元素</span></span><br><span class="line"></span><br><span class="line">   sort(v.begin(), v.end());<span class="comment">//元素排序</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">//sort(v.begin(), v.end(), cmp);//自定义排序规则，cmp函数自定义</span></span><br><span class="line"></span><br><span class="line">   reverse(v.begin(), v.end());</span><br><span class="line">   </span><br><span class="line"><span class="comment">//vector-----------------</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<blockquote>
-<p>另外也可以定义二维动态数组即vector<int>vec[2];也就是两个容器，用它可以很方便的保存有向图的邻接表,即vec[i]中存放的是与第i个顶点相邻的顶点（从顶点i出发），.其操作只要把上述代码中的vec改成vec[i] 就可以.</int></p>
-</blockquote>
-</blockquote>
-<h4 id="二、队列-queue"><a href="#二、队列-queue" class="headerlink" title="二、队列 queue"></a>二、队列 queue</h4><pre><code>队列，又称为伫列（queue），是先进先出（FIFO, First-In-First-Out）的线性表。在具体应用中通常
-用链表或者数组来实现。队列只允许在后端（称为rear）进行插入操作，在前端（称为front）进行删除操作。 
-队列的操作方式和堆栈类似，唯一的区别在于队列只允许新数据在后端进行添加。 </code></pre><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;que;<span class="comment">//队列que,存放int型数据</span></span><br><span class="line"></span><br><span class="line">que.push(<span class="number">3</span>);<span class="comment">//将3入队列</span></span><br><span class="line"></span><br><span class="line">que.push(<span class="number">2</span>);<span class="comment">//将2入队列</span></span><br><span class="line"></span><br><span class="line">que.pop();<span class="comment">//队首3出队列</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> Front = que.front();<span class="comment">//获取队首元素</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> Size = que.size();<span class="comment">//队列中元素个数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> isEmpty = que.empty(); <span class="comment">//是否为空</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">queue</span>&lt;T&gt;que;  <span class="comment">// T是存放数据的类型，可以是int, double等，也可以是自定义的结构体类型.</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//deque-------------双端队列</span></span><br><span class="line"></span><br><span class="line">   push_back()方法在尾部插入元素，不断扩张队列</span><br><span class="line"></span><br><span class="line">   push_front()和insert()在首部和中间位置插入元素，只是将原位置上的元素值覆盖，不会增加新元素</span><br><span class="line"></span><br><span class="line">   <span class="built_in">deque</span>&lt;<span class="keyword">int</span>&gt; d;</span><br><span class="line"></span><br><span class="line">   d.push_back(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">   d.push_back(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">   d.push_back(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">   d.insert(d.begin() + <span class="number">1</span>, <span class="number">88</span>);</span><br><span class="line"></span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; d[<span class="number">0</span>] &lt;&lt; d[<span class="number">1</span>] &lt;&lt; d[<span class="number">2</span>] &lt;&lt;<span class="built_in">endl</span>; <span class="comment">//输出 1 88 3</span></span><br><span class="line"></span><br><span class="line">   d.pop_front();<span class="comment">//头部删除元素</span></span><br><span class="line"></span><br><span class="line">   d.pop_back();<span class="comment">//尾部删除元素</span></span><br><span class="line"></span><br><span class="line">   d.erase(d.begin() + <span class="number">1</span>);</span><br><span class="line">   </span><br><span class="line"><span class="comment">//deque-------------双端队列</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>优先队列 priority_queue </p>
-<blockquote>
-<p>优先队列也是一种队列，只不过不同的是，优先队列的出队顺序是按照优先级来的；在有些情况下，可能需要<br> 找到元素集合中的最小或者最大元素，可以利用优先队列ADT来完成操作，优先队列ADT是一种数据结构，它支<br> 持插入和删除最小值操作(返回并删除最小元素)或删除最大值操作(返回并删除最大元素);这些操作等价于<br> 队列的<code>queue</code>和<code>dequeue</code>操作,区别在于,对于优先队列,元素进入队列的顺序可能与其被操作的顺序不同,<br> 作业调度是优先队列的一个应用实例,它根据优先级的高低而不是先到先服务的方式来进行调度;如果最小键值<br> 元素拥有最高的优先级，那么这种优先队列叫作升序优先队列(即总是先删除最小的元素),类似的,如果最大键<br> 值元素拥有最高的优先级,那么这种优先队列叫作降序优先队列（即总是先删除最大的元素）.</p>
-</blockquote>
-</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//示例</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> len = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[len] = &#123;<span class="number">3</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">6</span>, <span class="number">2</span>&#125;;</span><br><span class="line"></span><br><span class="line">priority_queue&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; ++ i)</span><br><span class="line">    q.push(a[i]);</span><br><span class="line">    </span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; ++ i)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt; q.top() &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    q.pop();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出为 : 9 6 5 3 2</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-<h1 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h1><pre><code>迭代器是一种检查容器内元素并遍历元素的数据类型。C++更趋向于使用迭代器而不是下标操作，因为标准库为每一种
-标准容器（如vector）定义了一种迭代器类型，而只用少数容器（如vector）支持下标操作访问容器元素。</code></pre><h2 id="一、定义和初始化"><a href="#一、定义和初始化" class="headerlink" title="一、定义和初始化"></a>一、定义和初始化</h2><p>每种容器都定义了自己的迭代器类型，如vector:</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator    iter;    <span class="comment">//定义一个名为iter的变量</span></span><br></pre></td></tr></table></figure>
-
-<p>每种容器都定义了一对名为begin和en的函数，用于返回迭代器。下面对迭代器进行初始化操作：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;    ivec;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator    iter1=ivec.bengin();    <span class="comment">//将迭代器iter1初始化为指向ivec容器的第一个元素</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator   iter2=ivec.end();    <span class="comment">//将迭代器iter2初始化为指向ivec容器的最后一个元素的下一个位置</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意end并不指向容器的任何元素，而是<code>指向容器的最后元素的下一位置</code>，称为超出末端迭代器。如果vector为空，则begin<br>返回的迭代器和end返回的迭代器相同。一旦向上面这样定义和初始化，就相当于把该迭代器和容器进行了某种关联，就像把一<br>个指针初始化为指向某一空间地址一样。</p>
-</blockquote>
-<h2 id="二、常用操作"><a href="#二、常用操作" class="headerlink" title="二、常用操作"></a>二、常用操作</h2><p>下面列出了迭代器的常用运算操作：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">*iter                <span class="comment">//对iter进行解引用，返回迭代器iter指向的元素的引用</span></span><br><span class="line">iter-&gt;men            <span class="comment">//对iter进行解引用，获取指定元素中名为men的成员。等效于(*iter).men</span></span><br><span class="line">++iter                <span class="comment">//给iter加1，使其指向容器的下一个元素</span></span><br><span class="line">iter++</span><br><span class="line">--iter                <span class="comment">//给iter减1，使其指向容器的前一个元素</span></span><br><span class="line">iter--</span><br><span class="line">iter1==iter2        <span class="comment">//比较两个迭代器是否相等，当它们指向同一个容器的同一个元素或者都指向同同一个容器的超出末端的下一个位置时，它们相等 </span></span><br><span class="line">iter1!=iter2</span><br></pre></td></tr></table></figure>
-
-<p>假设已经声明一个vector<int>的ivec容器，下面用迭代器来遍历ivec容器，把其每个元素重置为0：</int></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator iter=ivec.begin();iter!=ivec.end();++iter)</span><br><span class="line">        *iter=<span class="number">0</span>;</span><br></pre></td></tr></table></figure>
-
-<p>vector 和 deque 容器的迭代器提供额外的运算</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">iter + n</span><br><span class="line">iter - n</span><br><span class="line"><span class="comment">//在迭代器上加（减）整数值 n，将产生指向容器中前面（后面）第 n个元素的迭代器。新计算出来的迭代器必须指向容器中的元素或超出容器末端的下一位置</span></span><br><span class="line">iter1 +=iter2</span><br><span class="line">iter1 -=iter2</span><br><span class="line"><span class="comment">//这里迭代器加减法的复合赋值运算：将 iter1 加上或减去 iter2 的运算结果赋给 iter1</span></span><br><span class="line">iter1 - iter2</span><br><span class="line"><span class="comment">//两个迭代器的减法，其运算结果加上右边的迭代器即得左边的迭代器。这两个迭代器必须指向同一个容器中的元素或超出容器末端的下一位置只适用于 vector 和 deque 容器</span></span><br><span class="line">iter + n</span><br><span class="line">iter - n</span><br><span class="line"><span class="comment">//在迭代器上加（减）整数值 n，将产生指向容器中前面（后面）第 n个元素的迭代器。新计算出来的迭代器必须指向容器中的元素或超出容器末端的下一位置</span></span><br><span class="line">&gt;, &gt;=,&lt;, &lt;=</span><br><span class="line"><span class="comment">//迭代器的关系操作符。当一个迭代器指向的元素在容器中位于另一个迭代器指向的元素之前，则前一个迭代器小于后一个迭代器。关系操作符的两个迭代器必须指向同一个容器中的元素或超出容器末端的下一位置只适用于 vector 和 deque 容器</span></span><br></pre></td></tr></table></figure>
-
-
-<h2 id="三、迭代器const-iterator"><a href="#三、迭代器const-iterator" class="headerlink" title="三、迭代器const_iterator"></a>三、迭代器const_iterator</h2><p>每种容器还定义了一种名为const_iterator的类型。该类型的迭代器只能读取容器中的元素，不能用于改变其值。之前的例子中，普通的迭代器可以对容器中的元素进行解引用并修改，而const_iterator类型的迭代器只能用于读不能进行重写。例如可以进行如下操作:<br></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::const_iterator iter=ivec.begin();iter!=ivec.end();++iter)</span><br><span class="line">     <span class="built_in">cout</span>&lt;&lt;*iter&lt;&lt;<span class="built_in">endl</span>;       <span class="comment">//合法，读取容器中元素值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::const_iterator iter=ivec.begin();iter!=ivec.end();++iter)</span><br><span class="line">    *iter=<span class="number">0</span>;        <span class="comment">//不合法，不能进行写操作</span></span><br></pre></td></tr></table></figure>
-
-<p>const_iterator和const  iterator是不一样的，后者对迭代器进行声明时，必须对迭代器进行初始化，并且一旦初始化后就不能修改其值。这有点像常量指针和指针常量的关系。例如：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;    ivec(<span class="number">10</span>);</span><br><span class="line"><span class="keyword">const</span>    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator    iter=ivec.begin();</span><br><span class="line">*iter=<span class="number">0</span>;    <span class="comment">//合法，可以改变其指向的元素的值</span></span><br><span class="line">++iter;    <span class="comment">//不合法，无法改变其指向的位置</span></span><br></pre></td></tr></table></figure>
-
-
+        <h3 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h3><p>STL是Standard Template Library的简称，中文名标准模板库，惠普实验室开发的一系列软件的统称。它是由Alexander Stepanov、Meng Lee和David R Musser在惠普实验室工作时所开发出来的。从根本上说，STL是一些“容器”的集合，这些“容器”有list,vector,set,map等，STL也是算法和其他一些组件的集合。这里的“容器”和算法的集合指的是世界上很多聪明人很多年的杰作。STL的目的是标准化组件，这样就不用重新开发，可以使用现成的组件。STL现在是C++的一部分，因此不用安装额外的库文件。</p>
+        
+          <a class="article-more-a" href="/2019/07/29/STL简介/#more">more >></a>
+        
       
 
       
@@ -356,81 +347,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/07/29/STL简介/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/29/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/29/hello-world/" class="archive-article-date">
-  	<time datetime="2019-07-29T01:51:14.158Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/29/hello-world/">展开全文 >></a>
         </p>
       
 
