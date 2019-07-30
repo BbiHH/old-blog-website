@@ -6,16 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Category: STL | BbiHH&#39;s blog</title>
+  <title>欧拉函数 | BbiHH&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="IT,ACMer,SE,Student">
-<meta property="og:type" content="website">
-<meta property="og:title" content="BbiHH&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/categories/STL/index.html">
+  <meta name="description" content="定义 φ(n) 表示 1~n 中 与 x 互质的数的个数.        pi即为n的质因子.oi-wiki">
+<meta name="keywords" content="模板">
+<meta property="og:type" content="article">
+<meta property="og:title" content="欧拉函数">
+<meta property="og:url" content="http://yoursite.com/2019/07/30/欧拉函数/index.html">
 <meta property="og:site_name" content="BbiHH&#39;s blog">
+<meta property="og:description" content="定义 φ(n) 表示 1~n 中 与 x 互质的数的个数.        pi即为n的质因子.oi-wiki">
 <meta property="og:locale" content="Chinese">
+<meta property="og:image" content="http://yoursite.com/images/pasted-2.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-3.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-4.png">
+<meta property="og:updated_time" content="2019-07-30T16:15:18.780Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BbiHH&#39;s blog">
+<meta name="twitter:title" content="欧拉函数">
+<meta name="twitter:description" content="定义 φ(n) 表示 1~n 中 与 x 互质的数的个数.        pi即为n的质因子.oi-wiki">
+<meta name="twitter:image" content="http://yoursite.com/images/pasted-2.png">
   
     <link rel="alternative" href="/atom.xml" title="BbiHH&#39;s blog" type="application/atom+xml">
   
@@ -145,71 +153,213 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-欧拉函数" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/29/STL简介/" class="archive-article-date">
-  	<time datetime="2019-07-29T02:44:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-29</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/29/STL简介/">STL简介</a>
+    <h1 class="article-title" itemprop="name">
+      欧拉函数
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/07/30/欧拉函数/" class="archive-article-date">
+  	<time datetime="2019-07-30T12:46:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><ul>
+<li>φ(n) 表示 <code>1~n</code> 中 与 <code>x</code> 互质的数的个数.<br></li>
+</ul>
+<p><img src="/images/pasted-2.png" alt="upload successful"><br>      <code>pi</code>即为<code>n</code>的质因子.<br><a href="https://oi-wiki.org/math/euler/" target="_blank" rel="noopener">oi-wiki</a><br><br></p>
+<a id="more"></a>
+<h4 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h4><ul>
+<li><p>若 <code>n = p^k</code> ,其中p为质数,那么<code>φ(n)=p^k-p^(k-1)</code>  (定义推出)</p>
+</li>
+<li><p>它在整数<code>n</code>上的值等于对<code>n</code>进行素因子分解后，所有的素数幂上的欧拉函数之积 (定义推出)</p>
+</li>
+<li><p>欧拉函数是积性函数当  <code>gcd(a,b)=1</code> 时, φ(a<code>*</code>b) = φ(a)<code>*</code>φ(b)  ,  特别的 , 当 <code>n</code> 为奇数时,φ(2n) = φ(n)</p>
+</li>
+</ul>
+<h4 id="求欧拉函数"><a href="#求欧拉函数" class="headerlink" title="求欧拉函数"></a>求欧拉函数</h4><h6 id="一-直接实现"><a href="#一-直接实现" class="headerlink" title="(一)直接实现"></a>(一)直接实现</h6><p>求解欧拉函数的值可用其计算公式 <code>φ(x)=x(1-1/p1)(1-1/p2)(1-1/p3)(1-1/p4)…..(1-1/pn)</code> 通过找<code>x</code>的质因子来计算其欧拉函数<br><br>时间复杂度: O(√¯n）   用于求单个数的欧拉函数值</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">euler_phi</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> ans = n;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i*i &lt;= n; i++) <span class="comment">//只需要枚举到 sqrt(n) </span></span><br><span class="line">    <span class="keyword">if</span> (n % i == <span class="number">0</span>) &#123;</span><br><span class="line">      ans = ans / i * (i - <span class="number">1</span>);</span><br><span class="line">      <span class="keyword">while</span> (n % i == <span class="number">0</span>) n /= i; <span class="comment">//把该质因子全部约掉</span></span><br><span class="line">    &#125;</span><br><span class="line">  <span class="keyword">if</span> (n &gt; <span class="number">1</span>) ans = ans / n * (n - <span class="number">1</span>); <span class="comment">//当n还大于零时,其为一个素数,质因子为其本身</span></span><br><span class="line">  <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="二-筛法求欧拉函数"><a href="#二-筛法求欧拉函数" class="headerlink" title="(二)筛法求欧拉函数"></a>(二)筛法求欧拉函数</h6><p>在线性筛求素数时,每一个合数(非素数)都是被最小的质因子筛掉的.假设<code>p1</code>是<code>n</code>的最小质因子, <code>p1 x n&#39; =  n</code> , 那么线性筛过程中,<code>n</code>通过 <code>n&#39;x p1</code> 筛掉.<br><br>下面对  <em>n’mod  p1</em>  进行讨论<br><br> &lt;1&gt;  如果  <em>n’ mod  p1 = 0</em>  那么<code>n&#39;</code>包含了 <code>n</code> 的所有质因子.即有</p>
+<p><img src="/images/pasted-3.png" alt="upload successful"><br><br><br>  &lt;2&gt;  如果 <em>n’mod  p1 = 0</em> ,<code>n</code> 与 <code>n&#39;</code> 互质, 则有</p>
+<p><img src="/images/pasted-4.png" alt="upload successful"></p>
+<p>通过对此讨论,可以通过自下而上通过最小质因子求出各数的欧拉函数值,并筛出素数</p>
+<ul>
+<li>欧拉筛素数</li>
+</ul>
+<p>时间复杂度 O(n)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1e6</span>+<span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> flag[MAXN];    <span class="comment">//标记数组</span></span><br><span class="line"><span class="keyword">int</span> phi[MAXN];      <span class="comment">//欧拉函数值，i的欧拉函数值=phi[i]</span></span><br><span class="line"><span class="keyword">int</span> p[MAXN];        <span class="comment">//素数</span></span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">0</span>;        <span class="comment">//素数个数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Get_phi</span><span class="params">()</span>      <span class="comment">//筛法求欧拉函数,且线性求出素数</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(flag, <span class="literal">true</span>, <span class="keyword">sizeof</span>(flag));</span><br><span class="line">    phi[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;MAXN; i++)                     <span class="comment">//线性筛法</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(flag[i])<span class="comment">///素数</span></span><br><span class="line">        &#123;</span><br><span class="line">            p[cnt++] = i;</span><br><span class="line">            phi[i] = i<span class="number">-1</span>;                         <span class="comment">//素数的欧拉函数值是素数 n-1</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;cnt; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(i*p[j] &gt; MAXN)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            flag[i*p[j]] = <span class="literal">false</span>;                 <span class="comment">//素数的倍数，所以i*p[j]不是素数</span></span><br><span class="line">            <span class="keyword">if</span>(i%p[j] == <span class="number">0</span>)                       <span class="comment">//性质：i mod p == 0, 那么 phi(i * p) == p * phi(i)</span></span><br><span class="line">            &#123;</span><br><span class="line">                phi[i*p[j]] = p[j] * phi[i];</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                phi[i*p[j]] = (p[j]<span class="number">-1</span>) * phi[i];  <span class="comment">//i mod p != 0, 那么 phi(i * p) == phi(i) * (p-1) </span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//测试</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Get_phi();</span><br><span class="line">    <span class="keyword">int</span> m;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;m)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;phi[m]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>求欧拉函数</li>
+</ul>
+<p>时间复杂度 O(n)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">phi_table</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">int</span> *phi)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">     <span class="built_in">memset</span>(phi,<span class="number">0</span>,<span class="keyword">sizeof</span>(phi)); <span class="comment">//初始化</span></span><br><span class="line">     phi[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(phi[i]==<span class="number">0</span>)&#123;               <span class="comment">// phi[i]==0 说明当前i为素数  因为在下面的向上递推的时候给i的倍数</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;=n;j+=i)&#123;  <span class="comment">// 没赋值的都不为i的倍数, 参考挨氏素数筛法</span></span><br><span class="line">                 <span class="keyword">if</span>(phi[j]==<span class="number">0</span>) phi[j] = j; </span><br><span class="line">                 phi[j] = phi[j] / i * (i - <span class="number">1</span>) ;  <span class="comment">//递归地使用公式 此时 i 为 j 一个的质因子,第一个出现</span></span><br><span class="line">                    &#125;                             <span class="comment">//的 i 也为其最小质因子</span></span><br><span class="line">             &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>埃氏筛法筛素数(线性筛)</li>
+</ul>
+<p>时间复杂度 O(n log log n)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1e5</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> is_prime[MAXN];</span><br><span class="line"><span class="keyword">int</span> prime[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="comment">//埃氏筛法  return 素数个数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Eratosthenes</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;++i) is_prime[i] = <span class="number">1</span>;</span><br><span class="line">        is_prime[<span class="number">0</span>] = is_prime[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;++i)&#123;</span><br><span class="line">                <span class="keyword">if</span>(is_prime[i])&#123;</span><br><span class="line">                        prime[p++] = i;</span><br><span class="line">                        <span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;=n;j+=i)</span><br><span class="line">                                is_prime[j] = <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">入门</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">模板</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/STL//" class="article-tag-list-link color4">STL</a>
+        			<a href="/categories/数论//" class="article-tag-list-link color3">数论</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/30/欧拉函数/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/07/30/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -232,10 +382,10 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
-		isCategory: true,
+		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
 		root: "/",
