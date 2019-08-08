@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019/7 | BbiHH&#39;s blog</title>
+  <title>图的几种储存方式 | BbiHH&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="IT,ACMer,SE,Student">
-<meta property="og:type" content="website">
-<meta property="og:title" content="BbiHH&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/archives/2019/07/index.html">
+  <meta name="description" content="图的储存方式  图是一个好东西,能够使用图来模拟或解决很多生活问题,同时在各大比赛上都少不了有关于图的问题.图是关系与顶点与边的,那么我们该如何来存入图的信息呢?">
+<meta name="keywords" content="图论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图的几种储存方式">
+<meta property="og:url" content="http://yoursite.com/2019/08/07/图的储存方式/index.html">
 <meta property="og:site_name" content="BbiHH&#39;s blog">
+<meta property="og:description" content="图的储存方式  图是一个好东西,能够使用图来模拟或解决很多生活问题,同时在各大比赛上都少不了有关于图的问题.图是关系与顶点与边的,那么我们该如何来存入图的信息呢?">
 <meta property="og:locale" content="Chinese">
+<meta property="og:updated_time" content="2019-08-08T07:28:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BbiHH&#39;s blog">
+<meta name="twitter:title" content="图的几种储存方式">
+<meta name="twitter:description" content="图的储存方式  图是一个好东西,能够使用图来模拟或解决很多生活问题,同时在各大比赛上都少不了有关于图的问题.图是关系与顶点与边的,那么我们该如何来存入图的信息呢?">
   
     <link rel="alternative" href="/atom.xml" title="BbiHH&#39;s blog" type="application/atom+xml">
   
@@ -145,169 +149,183 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-图的储存方式" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      图的几种储存方式
+    </h1>
+  
+
+        
+        <a href="/2019/08/07/图的储存方式/" class="archive-article-date">
+  	<time datetime="2019-08-07T09:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-07</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="图的储存方式"><a href="#图的储存方式" class="headerlink" title="图的储存方式"></a>图的储存方式</h2><p>  图是一个好东西,能够使用图来模拟或解决很多生活问题,同时在各大比赛上都少不了有关于图的问题.图是关系与顶点与边的,那么我们该如何来存入图的信息呢?<br>  <a id="more"></a></p>
+<h4 id="1-直接存边"><a href="#1-直接存边" class="headerlink" title="1. 直接存边"></a>1. 直接存边</h4><p>  我们开一个数组，数组里每个元素是图的一条边。其中存的每一条边都包含这些信息:顶点 v 与 u , 边的权值 .<br>  这就用到结构体数组 . 对于无向图 , 只需要存两个 顶点 , 有向图的话需要区分 起点 终点 .<br>  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 直接存边 </span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> start; <span class="comment">// 起点</span></span><br><span class="line">    <span class="keyword">int</span> to;    <span class="comment">// 终点</span></span><br><span class="line">    <span class="keyword">int</span> cost;  <span class="comment">// 花费(权值)</span></span><br><span class="line">&#125;G[MAXN];</span><br></pre></td></tr></table></figure></p>
+<p>  这样做有个缺点 , 每次想要知道两个点之间是否有连边（或者说一条边是否存在），都需要遍历整个数组进行查找.而且如果没有进行排序的话 , 还不能使用<a href="https://oi-wiki.org/basic/binary/" target="_blank" rel="noopener">二分查找</a>( O(log n) ) , 只能顺序查找 ( O(n) ) , 对于需要多次查找的情况 , 显然是不合适的 . 但在使用 Kruskal 算法求 <a href="https://oi-wiki.org/graph/mst/" target="_blank" rel="noopener">最小生成树</a> 的时候能用到这种方法 .</p>
+<h4 id="2-邻接矩阵"><a href="#2-邻接矩阵" class="headerlink" title="2.邻接矩阵"></a>2.邻接矩阵</h4><p>  <strong>邻接矩阵</strong>的英文名是 adjacency matrix。它的形式是<code>bool adj[n][n]</code> , 这里需要存  <code>n</code> 个节点 , <code>adj[x][y]</code> 表示 <code>节点x</code> 与 <code>节点y</code> 之间是否有边.如果边有权值的话 , 用 <code>int adj[n][n]</code> 直接吧边权存进去 .<br>  无向图需要 <code>x</code> 与 <code>y</code> 有边则需要存 <code>adj[x][y]</code> 与 <code>adj[y][x]</code> 表示有双向导通 , 有向图则 <code>x -&gt; y</code> 则存 <code>adj[x][y]</code> 就行了 .</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> adj[MAXN][MAXN],n,m;  <span class="comment">// n 为节点数 , m 为边数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> x,y,v;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>,&amp;x,&amp;y,&amp;v);</span><br><span class="line">        adj[x][y]=adj[y][x]=v;<span class="comment">//向x,y间添加一个权值为v的边(无向)</span></span><br><span class="line">        <span class="comment">//有向图为adj[x][y]=v;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>它的<strong>优点</strong>是 , 在查询两点间是否有边时 , 时间复杂度为 O(1) , 但是<strong>缺点</strong>是它存边却是极占内存, 它的空间(内存)复杂度是 O(n^2) . 对于一个稀疏的图（边相对于点数的平方比较少）来说，用邻接矩阵来存的话，成本偏高 .<br>如果n*m超过3×1e7，内存就超过128MB了，所以当看到类似的 n,m=&lt;1e4时 就不要用邻接矩阵 , 需要考虑其他的存储方式 .</p>
+<h4 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h4><p>  <strong>邻接表</strong>英文名是 adjacency list . 邻接表是链状的 ，它实际上是一个离散化的邻接矩阵. <code>edge[i]</code> 代表第 <code>i</code> 号节点 , <code>.to[]</code> 表示到与别的节点联通的路径 ,<code>.v[ ]</code>是i到 <code>edge[i].to[j]</code> 号节点的权值 , <code>.len</code> 用来标记一共有几个联通 <code>i</code> 号节点的边 (也称<code>节点i</code>的<code>出度</code>)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> to[<span class="number">1010</span>];  <span class="comment">//存储与当前节点相接的节点</span></span><br><span class="line">    <span class="keyword">int</span> v[<span class="number">1010</span>];   <span class="comment">//两节点间的边的权值</span></span><br><span class="line">    <span class="keyword">int</span> olen;      <span class="comment">//出度</span></span><br><span class="line">    <span class="comment">//int ilen;      //入度 </span></span><br><span class="line">&#125;edge[<span class="number">1010</span>];</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> x,y,v1;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>,&amp;x,&amp;y,&amp;v1);</span><br><span class="line">        edge[x].len++;edge[y].len++;</span><br><span class="line">        edge[x].to[edge[x].len]=y;edge[y].to[edge[x].len]=x;</span><br><span class="line">        edge[x].v[edge[x].len]=edge[y].to[edge[x].len]=v1;<span class="comment">//向x,y间添加一个权值为v的边(无向)</span></span><br><span class="line">        <span class="comment">/*有向图为</span></span><br><span class="line"><span class="comment">        edge[x].len++;</span></span><br><span class="line"><span class="comment">        edge[x].to[edge[x].len]=y;</span></span><br><span class="line"><span class="comment">        edge[x].v[edge[x].len]=v1;</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>你能帮我点亮小星星吗<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/30/欧拉函数/" class="archive-article-date">
-  	<time datetime="2019-07-30T12:46:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/30/欧拉函数/">欧拉函数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">模板</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">图论</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数论//" class="article-tag-list-link color3">数论</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
-
+      
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/07/图的储存方式/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/30/快速幂/" class="archive-article-date">
-  	<time datetime="2019-07-30T09:04:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-30</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/08/07/NAOqi开发日记（一）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Markdown文本使用目录
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/08/07/图论基础/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">图论基础</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/30/快速幂/">快速幂</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">模板</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/快算//" class="article-tag-list-link color3">快算</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/29/STL简介/" class="archive-article-date">
-  	<time datetime="2019-07-29T02:44:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/29/STL简介/">STL简介</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">入门</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/STL//" class="article-tag-list-link color4">STL</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
 
@@ -332,8 +350,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

@@ -6,16 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019/7 | BbiHH&#39;s blog</title>
+  <title>图论基础 | BbiHH&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="IT,ACMer,SE,Student">
-<meta property="og:type" content="website">
-<meta property="og:title" content="BbiHH&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/archives/2019/07/index.html">
+  <meta name="description" content="参考自https://www.cnblogs.com/jeavenwong/p/8204271.html 参考自https://oi-wiki.org/graph/ 图论概述  图的部分简介图论（graph theory） 是数学的一个分支，它以 图 为研究的对象。 图论本身是应用数学的一部分，历史上图论曾经被很多数学家各自独立建立过。关于图论的最早文字记载最早出现在欧拉 1736 年的论著中，也">
+<meta name="keywords" content="图论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图论基础">
+<meta property="og:url" content="http://yoursite.com/2019/08/07/图论基础/index.html">
 <meta property="og:site_name" content="BbiHH&#39;s blog">
+<meta property="og:description" content="参考自https://www.cnblogs.com/jeavenwong/p/8204271.html 参考自https://oi-wiki.org/graph/ 图论概述  图的部分简介图论（graph theory） 是数学的一个分支，它以 图 为研究的对象。 图论本身是应用数学的一部分，历史上图论曾经被很多数学家各自独立建立过。关于图论的最早文字记载最早出现在欧拉 1736 年的论著中，也">
 <meta property="og:locale" content="Chinese">
+<meta property="og:image" content="http://yoursite.com/images/pasted-9.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-11.png">
+<meta property="og:updated_time" content="2019-08-08T07:27:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BbiHH&#39;s blog">
+<meta name="twitter:title" content="图论基础">
+<meta name="twitter:description" content="参考自https://www.cnblogs.com/jeavenwong/p/8204271.html 参考自https://oi-wiki.org/graph/ 图论概述  图的部分简介图论（graph theory） 是数学的一个分支，它以 图 为研究的对象。 图论本身是应用数学的一部分，历史上图论曾经被很多数学家各自独立建立过。关于图论的最早文字记载最早出现在欧拉 1736 年的论著中，也">
+<meta name="twitter:image" content="http://yoursite.com/images/pasted-9.png">
   
     <link rel="alternative" href="/atom.xml" title="BbiHH&#39;s blog" type="application/atom+xml">
   
@@ -145,169 +152,216 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-图论基础" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      图论基础
+    </h1>
+  
+
+        
+        <a href="/2019/08/07/图论基础/" class="archive-article-date">
+  	<time datetime="2019-08-07T09:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-07</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><font size="3">参考自<a href="https://www.cnblogs.com/jeavenwong/p/8204271.html" target="_blank" rel="noopener">https://www.cnblogs.com/jeavenwong/p/8204271.html</a> </font><br><font size="3">参考自<a href="https://oi-wiki.org/graph/" target="_blank" rel="noopener">https://oi-wiki.org/graph/</a> 图论概述 </font></p>
+<h1 id="图的部分简介"><a href="#图的部分简介" class="headerlink" title="图的部分简介"></a>图的部分简介</h1><p><strong>图论（graph theory）</strong> 是数学的一个分支，它以 <strong>图</strong> 为研究的对象。</p>
+<p>图论本身是应用数学的一部分，历史上图论曾经被很多数学家各自独立建立过。关于图论的最早文字记载最早出现在欧拉 1736 年的论著中，也就是著名的柯尼斯堡（Konigsberg）问题（七桥问题）。</p>
+<a id="more"></a>
+<h2 id="图的定义"><a href="#图的定义" class="headerlink" title="图的定义"></a>图的定义</h2><p>一个图可以形式定义为一个二元组：  G = ( V, E )，其中：</p>
+<p>（1）V 是顶点（结点）的有穷集合。</p>
+<p>（2）E是连接V中两个不同顶点（顶点对）的边的有限集合。 如果E中的顶点对是有序的，即E中的每条边都是有方向的，则称G为有向图。如果顶点对是无序对，则称G是无向图。</p>
+<h2 id="有向图和无向图"><a href="#有向图和无向图" class="headerlink" title="有向图和无向图"></a>有向图和无向图</h2><p>下图是一个有向图，可以描述为：G = (V, E)，其中  V = {v1,v2,v3,v4,v5}<br>E = {<code>&lt;v1, v2&gt;</code>,<code>&lt;v1, v3&gt;</code>,<code>&lt;v2, v4&gt;</code>,<code>&lt;v3, v4&gt;</code>,<code>&lt;v4,v5&gt;</code>,<code>&lt;v5, v2&gt;</code>, <code>&lt;v5, v1&gt;</code>}<br><img src="/images/pasted-9.png" alt="upload successful"></p>
+<p>下图是一个无向图，可描述为：G = (V, E)，其中V = {v1,v2,v3,v4,v5, v6}E = {<code>(v1, v2)</code>,<code>(v1, v6)</code>,<code>(v2, v5)</code>,<code>(v2, v6)</code>,<code>(v3,v5)</code>,<code>(v3, v4)</code>,<code>(v4, v5)</code>}<br><img src="/images/pasted-11.png" alt="upload successful"></p>
+<h2 id="图的基本概念"><a href="#图的基本概念" class="headerlink" title="图的基本概念"></a>图的基本概念</h2><p>无向图：每条边都是无向边的图。</p>
+<p>有向图：每条边都是有向边的图。</p>
+<p>混合图：在一个图中，有些边是有向边，另一些边是无向边，则该图为混合图。</p>
+<p>有限图：一个图的点集和边集都是有穷集的图。</p>
+<p>零图：边集为空集的图。</p>
+<p>平凡图：仅有一个结点而没有边构成的图。</p>
+<p>关联：若有ei = (u,v) 且 ei ∈ E  则称 u 是和 v 相关联的。</p>
+<p>孤立点：无边关联的点。</p>
+<p>自环：若一条边所关联的两个结点重合，则称此边为自环。</p>
+<p>邻接：关联于同一条边的两个点 u 和 v 称为邻接的；关联于同一个点的两条边 e1 和 e2 是邻接的（或相邻的）。</p>
+<h2 id="图的基本定理"><a href="#图的基本定理" class="headerlink" title="图的基本定理"></a>图的基本定理</h2><p>1.对于无向图而言，假若顶点v和顶点w 之间存在一条边(v,w) ，则称v 和w是相邻的，顶点v 和w 互为邻接顶点。边(v,w) 和顶点v 和w 相关联。（对于有向图，称为邻接到和邻接自。）</p>
+<p>2.对于无向图而言，从顶点v到顶点w的路径指的是一个顶点序列(v = v0v1…vm= w)，其中(vi,vi+1)∈E。路径的长度指的是路径上的边的数目。（对于有向图，也可以定义路径，且路径是有向的。）</p>
+<p>3.若路径中的顶点没有重复，称为简单路径。</p>
+<p>4.第一个顶点和最后一个顶点相同的路径称为环或回路。</p>
+<p>5.在无向图中，如果从顶点v到顶点w有路径，则称顶点v和顶点w是连通的。</p>
+<p>6.如果无向图G中任意两个顶点都是连通的，则称图G是连通图。</p>
+<p>8.如果一个无向图不是连通图，则其中的每个极大连通子图称为无向图的连通分量。</p>
+<p>9.如果有向图G中任意两个顶点间都存在有向路径（对任意两个顶点v和w，既存在v到w的有向路径，也存在w到v的有向路径），则称有向图G是强连通图。</p>
+<p>10.其各个极大强连通子图称作它的强连通分量。 如果不考虑有向图中边的方向所得到的无向图是连通图，则有向图称为弱连通图。</p>
+<p>11.对于无向图而言，和顶点相关联的边的数目称为顶点的度。</p>
+<p>12。对于有向图而言，从顶点出发的边的数目称为顶点的出度，到达该顶点的数目称为顶点的入度。 边上带有权值的有向图或无向图分别称作有向网或无向网。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>你能帮我点亮小星星吗<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/30/欧拉函数/" class="archive-article-date">
-  	<time datetime="2019-07-30T12:46:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/30/欧拉函数/">欧拉函数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">模板</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">图论</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/数论//" class="article-tag-list-link color3">数论</a>
+        			<a href="/categories/图论基础//" class="article-tag-list-link color5">图论基础</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/07/图论基础/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/30/快速幂/" class="archive-article-date">
-  	<time datetime="2019-07-30T09:04:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-30</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/08/07/图的储存方式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          图的几种储存方式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/08/06/NAOqi开发日记（关于NAOqi的简介）-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">NAOqi开发日记（关于NAOqi的简介）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/30/快速幂/">快速幂</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">模板</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/快算//" class="article-tag-list-link color3">快算</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/29/STL简介/" class="archive-article-date">
-  	<time datetime="2019-07-29T02:44:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/29/STL简介/">STL简介</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">入门</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/STL//" class="article-tag-list-link color4">STL</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
 
@@ -332,8 +386,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
