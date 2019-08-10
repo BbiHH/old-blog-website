@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="BbiHH&#39;s blog">
 <meta property="og:description" content="STLSTL是Standard Template Library的简称，中文名标准模板库，惠普实验室开发的一系列软件的统称。它是由Alexander Stepanov、Meng Lee和David R Musser在惠普实验室工作时所开发出来的。从根本上说，STL是一些“容器”的集合，这些“容器”有list,vector,set,map等，STL也是算法和其他一些组件的集合。这里的“容器”和算法的">
 <meta property="og:locale" content="Chinese">
-<meta property="og:updated_time" content="2019-07-30T10:17:34.000Z">
+<meta property="og:updated_time" content="2019-08-10T03:12:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="STL简介">
 <meta name="twitter:description" content="STLSTL是Standard Template Library的简称，中文名标准模板库，惠普实验室开发的一系列软件的统称。它是由Alexander Stepanov、Meng Lee和David R Musser在惠普实验室工作时所开发出来的。从根本上说，STL是一些“容器”的集合，这些“容器”有list,vector,set,map等，STL也是算法和其他一些组件的集合。这里的“容器”和算法的">
@@ -238,6 +238,8 @@
 
 <p>const_iterator和const  iterator是不一样的，后者对迭代器进行声明时，必须对迭代器进行初始化，并且一旦初始化后就不能修改其值。这有点像常量指针和指针常量的关系。例如：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;    ivec(<span class="number">10</span>);</span><br><span class="line"><span class="keyword">const</span>    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator    iter=ivec.begin();</span><br><span class="line">*iter=<span class="number">0</span>;    <span class="comment">//合法，可以改变其指向的元素的值</span></span><br><span class="line">++iter;    <span class="comment">//不合法，无法改变其指向的位置</span></span><br></pre></td></tr></table></figure>
+
+
       
 
       
@@ -377,6 +379,19 @@
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#STL"><span class="toc-number">1.</span> <span class="toc-text">STL</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#容器"><span class="toc-number"></span> <span class="toc-text">容器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#容器基本功能与分类"><span class="toc-number"></span> <span class="toc-text">容器基本功能与分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、标准容器"><span class="toc-number">1.</span> <span class="toc-text">一、标准容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、顺序容器"><span class="toc-number">2.</span> <span class="toc-text">二、顺序容器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#一、向量-vector"><span class="toc-number">2.1.</span> <span class="toc-text">一、向量 vector</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、队列-queue"><span class="toc-number">2.2.</span> <span class="toc-text">二、队列 queue</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#迭代器"><span class="toc-number"></span> <span class="toc-text">迭代器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、定义和初始化"><span class="toc-number"></span> <span class="toc-text">一、定义和初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、常用操作"><span class="toc-number"></span> <span class="toc-text">二、常用操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、迭代器const-iterator"><span class="toc-number"></span> <span class="toc-text">三、迭代器const_iterator</span></a>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
@@ -505,7 +520,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+                <a href="javascript:void(0)" class="js-tag color3">入门</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -513,7 +528,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">入门</a>
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
               </li>
             
             <div class="clearfix"></div>

@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://yoursite.com/images/pasted-2.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-3.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-4.png">
-<meta property="og:updated_time" content="2019-07-30T16:15:20.000Z">
+<meta property="og:updated_time" content="2019-08-10T03:14:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="欧拉函数">
 <meta name="twitter:description" content="定义 φ(n) 表示 1~n 中 与 x 互质的数的个数.        pi即为n的质因子.oi-wiki">
@@ -210,6 +210,8 @@
 </ul>
 <p>时间复杂度 O(n log log n)</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1e5</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> is_prime[MAXN];</span><br><span class="line"><span class="keyword">int</span> prime[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="comment">//埃氏筛法  return 素数个数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Eratosthenes</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;++i) is_prime[i] = <span class="number">1</span>;</span><br><span class="line">        is_prime[<span class="number">0</span>] = is_prime[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;++i)&#123;</span><br><span class="line">                <span class="keyword">if</span>(is_prime[i])&#123;</span><br><span class="line">                        prime[p++] = i;</span><br><span class="line">                        <span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;=n;j+=i)</span><br><span class="line">                                is_prime[j] = <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
       
 
       
@@ -323,7 +325,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/08/06/NAOqi开发日记（关于NAOqi的简介）-1/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/08/06/NAOqi开发日记（关于NAOqi的简介)/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -353,6 +355,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#定义"><span class="toc-number">1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#性质"><span class="toc-number">2.</span> <span class="toc-text">性质</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#求欧拉函数"><span class="toc-number">3.</span> <span class="toc-text">求欧拉函数</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#一-直接实现"><span class="toc-number">3.0.1.</span> <span class="toc-text">(一)直接实现</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#二-筛法求欧拉函数"><span class="toc-number">3.0.2.</span> <span class="toc-text">(二)筛法求欧拉函数</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -482,7 +497,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+                <a href="javascript:void(0)" class="js-tag color3">入门</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -490,7 +505,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">入门</a>
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
               </li>
             
             <div class="clearfix"></div>
