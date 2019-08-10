@@ -18,7 +18,7 @@
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="http://yoursite.com/images/pasted-13.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-14.png">
-<meta property="og:updated_time" content="2019-08-10T11:13:47.000Z">
+<meta property="og:updated_time" content="2019-08-10T11:22:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python多线程">
 <meta name="twitter:description" content="多线程这里先了解一下进程与线程 :">
@@ -203,7 +203,29 @@
 <li>线程可以被抢占（中断）。</li>
 <li>在其他线程正在运行时，线程可以暂时搁置（也称为睡眠） – 这就是线程的退让。</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line">    <span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">import</span> thread</span><br><span class="line">    <span class="keyword">import</span> time</span><br><span class="line"> </span><br><span class="line">    <span class="comment"># 为线程定义一个函数</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">print_time</span><span class="params">( threadName, delay)</span>:</span></span><br><span class="line">       count = <span class="number">0</span></span><br><span class="line">       <span class="keyword">while</span> count &lt; <span class="number">5</span>:</span><br><span class="line">          time.sleep(delay)</span><br><span class="line">          count += <span class="number">1</span></span><br><span class="line">          <span class="keyword">print</span> <span class="string">"%s: %s"</span> % ( threadName, time.ctime(time.time()) )</span><br><span class="line"> </span><br><span class="line">    <span class="comment"># 创建两个线程</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">       thread.start_new_thread( print_time, (<span class="string">"Thread-1"</span>, <span class="number">2</span>, ) )</span><br><span class="line">       thread.start_new_thread( print_time, (<span class="string">"Thread-2"</span>, <span class="number">4</span>, ) )</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">       <span class="keyword">print</span> <span class="string">"Error: unable to start thread"</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">       <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<h4 id="线程模块"><a href="#线程模块" class="headerlink" title="线程模块"></a>线程模块</h4><p>Python通过两个标准库thread和threading提供对线程的支持。thread提供了低级别的、原始的线程以及一个简单的锁。</p>
+<p>threading 模块提供的其他方法：</p>
+<ul>
+<li>threading.currentThread(): 返回当前的线程变量。</li>
+<li>threading.enumerate(): 返回一个包含正在运行的线程的list。正在运行指线程启动后、结束前，不包括启动前和终止后的线程。</li>
+<li>threading.activeCount(): 返回正在运行的线程数量，与len(threading.enumerate())有相同的结果。</li>
+</ul>
+<p>除了使用方法外，线程模块同样提供了Thread类来处理线程，Thread类提供了以下方法:</p>
+<ul>
+<li><p>run(): 用以表示线程活动的方法。</p>
+</li>
+<li><p>start():启动线程活动。</p>
+</li>
+<li><p>join([time]): 等待至线程中止。这阻塞调用线程直至线程的join() 方法被调用中止-正常退出或者抛出未处理的异常-或者是可选的超时发生。</p>
+</li>
+<li><p>isAlive(): 返回线程是否活动的。</p>
+</li>
+<li><p>getName(): 返回线程名。</p>
+</li>
+<li><p>setName(): 设置线程名。</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line">    <span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">import</span> thread</span><br><span class="line">    <span class="keyword">import</span> time</span><br><span class="line"> </span><br><span class="line">    <span class="comment"># 为线程定义一个函数</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">print_time</span><span class="params">( threadName, delay)</span>:</span></span><br><span class="line">       count = <span class="number">0</span></span><br><span class="line">       <span class="keyword">while</span> count &lt; <span class="number">5</span>:</span><br><span class="line">          time.sleep(delay)</span><br><span class="line">          count += <span class="number">1</span></span><br><span class="line">          <span class="keyword">print</span> <span class="string">"%s: %s"</span> % ( threadName, time.ctime(time.time()) )</span><br><span class="line"> </span><br><span class="line">    <span class="comment"># 创建两个线程</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">       thread.start_new_thread( print_time, (<span class="string">"Thread-1"</span>, <span class="number">2</span>, ) )</span><br><span class="line">       thread.start_new_thread( print_time, (<span class="string">"Thread-2"</span>, <span class="number">4</span>, ) )</span><br><span class="line">       <span class="comment">#thread.join()</span></span><br><span class="line">       <span class="keyword">print</span> <span class="string">"结束"</span></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">       <span class="keyword">print</span> <span class="string">"Error: unable to start thread"</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">       <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
       
 
       
@@ -333,7 +355,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#多线程"><span class="toc-number">1.</span> <span class="toc-text">多线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python多线程"><span class="toc-number">2.</span> <span class="toc-text">python多线程</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#多线程"><span class="toc-number">1.</span> <span class="toc-text">多线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python多线程"><span class="toc-number">2.</span> <span class="toc-text">python多线程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#线程模块"><span class="toc-number">2.1.</span> <span class="toc-text">线程模块</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
