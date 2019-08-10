@@ -8,20 +8,20 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>python多线程 | BbiHH&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="多线程这里先了解一下进程与线程 :   进程（Process） : 进程是一个具有一定独立功能的程序在一个数据集上的一次动态执行的过程，是操作系统进行资源分配和调度的一个独立单位，是应用程序运行的载体。进程是一种抽象的概念，从来没有统一的标准定义。进程一般由程序，数据集合和进程控制块三部分组成。程序用于描述进程要完成的功能，是控制进程执行的指令集；数据集合是程序在执行时所需要的数据和工作区；程序控">
+  <meta name="description" content="多线程这里先了解一下进程与线程 :">
 <meta name="keywords" content="IT,ACMer,SE,Student">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python多线程">
 <meta property="og:url" content="http://yoursite.com/2019/08/10/python多线程/index.html">
 <meta property="og:site_name" content="BbiHH&#39;s blog">
-<meta property="og:description" content="多线程这里先了解一下进程与线程 :   进程（Process） : 进程是一个具有一定独立功能的程序在一个数据集上的一次动态执行的过程，是操作系统进行资源分配和调度的一个独立单位，是应用程序运行的载体。进程是一种抽象的概念，从来没有统一的标准定义。进程一般由程序，数据集合和进程控制块三部分组成。程序用于描述进程要完成的功能，是控制进程执行的指令集；数据集合是程序在执行时所需要的数据和工作区；程序控">
+<meta property="og:description" content="多线程这里先了解一下进程与线程 :">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="http://yoursite.com/images/pasted-13.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-14.png">
-<meta property="og:updated_time" content="2019-08-10T09:32:11.000Z">
+<meta property="og:updated_time" content="2019-08-10T11:13:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python多线程">
-<meta name="twitter:description" content="多线程这里先了解一下进程与线程 :   进程（Process） : 进程是一个具有一定独立功能的程序在一个数据集上的一次动态执行的过程，是操作系统进行资源分配和调度的一个独立单位，是应用程序运行的载体。进程是一种抽象的概念，从来没有统一的标准定义。进程一般由程序，数据集合和进程控制块三部分组成。程序用于描述进程要完成的功能，是控制进程执行的指令集；数据集合是程序在执行时所需要的数据和工作区；程序控">
+<meta name="twitter:description" content="多线程这里先了解一下进程与线程 :">
 <meta name="twitter:image" content="http://yoursite.com/images/pasted-13.png">
   
     <link rel="alternative" href="/atom.xml" title="BbiHH&#39;s blog" type="application/atom+xml">
@@ -173,6 +173,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><p>这里先了解一下<code>进程</code>与<code>线程</code> :  </p>
+<a id="more"></a>
+
 <p><strong>进程</strong>（Process） : 进程是一个具有一定独立功能的程序在一个数据集上的一次动态执行的过程，是操作系统进行资源分配和调度的一个独立单位，是应用程序运行的载体。进程是一种抽象的概念，从来没有统一的标准定义。进程一般由程序，数据集合和进程控制块三部分组成。程序用于描述进程要完成的功能，是控制进程执行的指令集；数据集合是程序在执行时所需要的数据和工作区；程序控制块包含进程的描述信息和控制信息<br>是进程存在的唯一标志。<br><strong>线程</strong>(Thread) :线程是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务。</p>
 <blockquote>
 <p>一个进程就类似于你写好的一个程序(可以理解为任务集),而你的程序就是通过其他更小的子任务完成. 而进程中的子任务就能分到线程中,由多个线程完成多个子任务. 两者都是抽象概念 , 进程与线程可以理解为父子关系 . 普通程序是传统的顺序执行 , 多线程程序可以把程序中的子任务放一起来跑,是一种并发式执行. </p>
@@ -201,7 +203,7 @@
 <li>线程可以被抢占（中断）。</li>
 <li>在其他线程正在运行时，线程可以暂时搁置（也称为睡眠） – 这就是线程的退让。</li>
 </ul>
-
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line">    <span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">import</span> thread</span><br><span class="line">    <span class="keyword">import</span> time</span><br><span class="line"> </span><br><span class="line">    <span class="comment"># 为线程定义一个函数</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">print_time</span><span class="params">( threadName, delay)</span>:</span></span><br><span class="line">       count = <span class="number">0</span></span><br><span class="line">       <span class="keyword">while</span> count &lt; <span class="number">5</span>:</span><br><span class="line">          time.sleep(delay)</span><br><span class="line">          count += <span class="number">1</span></span><br><span class="line">          <span class="keyword">print</span> <span class="string">"%s: %s"</span> % ( threadName, time.ctime(time.time()) )</span><br><span class="line"> </span><br><span class="line">    <span class="comment"># 创建两个线程</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">       thread.start_new_thread( print_time, (<span class="string">"Thread-1"</span>, <span class="number">2</span>, ) )</span><br><span class="line">       thread.start_new_thread( print_time, (<span class="string">"Thread-2"</span>, <span class="number">4</span>, ) )</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">       <span class="keyword">print</span> <span class="string">"Error: unable to start thread"</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">       <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
       
 
       
