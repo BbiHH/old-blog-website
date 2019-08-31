@@ -8,21 +8,21 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>欧拉函数 | BbiHH&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="定义 φ(n) 表示 1~n 中 与 x 互质的数的个数.        pi即为n的质因子.oi-wiki">
+  <meta name="description" content="(原创)">
 <meta name="keywords" content="模板">
 <meta property="og:type" content="article">
 <meta property="og:title" content="欧拉函数">
 <meta property="og:url" content="http://yoursite.com/2019/07/30/欧拉函数/index.html">
 <meta property="og:site_name" content="BbiHH&#39;s blog">
-<meta property="og:description" content="定义 φ(n) 表示 1~n 中 与 x 互质的数的个数.        pi即为n的质因子.oi-wiki">
+<meta property="og:description" content="(原创)">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="http://yoursite.com/images/pasted-2.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-3.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-4.png">
-<meta property="og:updated_time" content="2019-08-10T03:14:28.000Z">
+<meta property="og:updated_time" content="2019-08-31T16:02:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="欧拉函数">
-<meta name="twitter:description" content="定义 φ(n) 表示 1~n 中 与 x 互质的数的个数.        pi即为n的质因子.oi-wiki">
+<meta name="twitter:description" content="(原创)">
 <meta name="twitter:image" content="http://yoursite.com/images/pasted-2.png">
   
     <link rel="alternative" href="/atom.xml" title="BbiHH&#39;s blog" type="application/atom+xml">
@@ -173,11 +173,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><ul>
+        <p>(原创)</p>
+<a id="more"></a>
+<h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><ul>
 <li>φ(n) 表示 <code>1~n</code> 中 与 <code>x</code> 互质的数的个数.<br></li>
 </ul>
 <p><img src="/images/pasted-2.png" alt="upload successful"><br>      <code>pi</code>即为<code>n</code>的质因子.<br><a href="https://oi-wiki.org/math/euler/" target="_blank" rel="noopener">oi-wiki</a><br><br></p>
-<a id="more"></a>
 <h4 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h4><ul>
 <li><p>若 <code>n = p^k</code> ,其中p为质数,那么<code>φ(n)=p^k-p^(k-1)</code>  (定义推出)</p>
 </li>
@@ -210,8 +211,6 @@
 </ul>
 <p>时间复杂度 O(n log log n)</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1e5</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> is_prime[MAXN];</span><br><span class="line"><span class="keyword">int</span> prime[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="comment">//埃氏筛法  return 素数个数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Eratosthenes</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;++i) is_prime[i] = <span class="number">1</span>;</span><br><span class="line">        is_prime[<span class="number">0</span>] = is_prime[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;++i)&#123;</span><br><span class="line">                <span class="keyword">if</span>(is_prime[i])&#123;</span><br><span class="line">                        prime[p++] = i;</span><br><span class="line">                        <span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;=n;j+=i)</span><br><span class="line">                                is_prime[j] = <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
       
 
       
@@ -497,15 +496,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">入门</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">图论</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">python编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -517,7 +516,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python编程</a>
+                <a href="javascript:void(0)" class="js-tag color3">入门</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">AI</a>
               </li>
             
             <div class="clearfix"></div>

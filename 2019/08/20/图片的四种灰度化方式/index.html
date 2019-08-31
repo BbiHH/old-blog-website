@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>图片的四种灰度化方式 | BbiHH&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="图片灰度化灰度化，在RGB模型中，如果R=G=B时，则彩色表示一种灰度颜色，其中R=G=B的值叫灰度值，因此，灰度图像每个像素只需一个字节存放灰度值（又称强度值、亮度值），灰度范围为0-255。一般有分量法 最大值法平均值法加权平均法四种方法对彩色图像进行灰度化。灰度值大的像素点比较亮（像素值最大为255，为白色），反之比较暗（像素最下为0，为黑色）。">
+  <meta name="description" content="(原创)">
 <meta name="keywords" content="openCV">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图片的四种灰度化方式">
 <meta property="og:url" content="http://yoursite.com/2019/08/20/图片的四种灰度化方式/index.html">
 <meta property="og:site_name" content="BbiHH&#39;s blog">
-<meta property="og:description" content="图片灰度化灰度化，在RGB模型中，如果R=G=B时，则彩色表示一种灰度颜色，其中R=G=B的值叫灰度值，因此，灰度图像每个像素只需一个字节存放灰度值（又称强度值、亮度值），灰度范围为0-255。一般有分量法 最大值法平均值法加权平均法四种方法对彩色图像进行灰度化。灰度值大的像素点比较亮（像素值最大为255，为白色），反之比较暗（像素最下为0，为黑色）。">
+<meta property="og:description" content="(原创)">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="http://yoursite.com/2019/08/20/图片的四种灰度化方式/%5Cimages%5Cpasted-18.png">
 <meta property="og:image" content="http://yoursite.com/2019/08/20/图片的四种灰度化方式/%5Cimages%5Cpasted-19.png">
@@ -23,10 +23,10 @@
 <meta property="og:image" content="http://yoursite.com/2019/08/20/图片的四种灰度化方式/%5Cimages%5Cpasted-22.png">
 <meta property="og:image" content="http://yoursite.com/2019/08/20/图片的四种灰度化方式/%5Cimages%5Cpasted-23.png">
 <meta property="og:image" content="http://yoursite.com/2019/08/20/图片的四种灰度化方式/%5Cimages%5Cpasted-24.png">
-<meta property="og:updated_time" content="2019-08-20T08:37:20.000Z">
+<meta property="og:updated_time" content="2019-08-31T16:00:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图片的四种灰度化方式">
-<meta name="twitter:description" content="图片灰度化灰度化，在RGB模型中，如果R=G=B时，则彩色表示一种灰度颜色，其中R=G=B的值叫灰度值，因此，灰度图像每个像素只需一个字节存放灰度值（又称强度值、亮度值），灰度范围为0-255。一般有分量法 最大值法平均值法加权平均法四种方法对彩色图像进行灰度化。灰度值大的像素点比较亮（像素值最大为255，为白色），反之比较暗（像素最下为0，为黑色）。">
+<meta name="twitter:description" content="(原创)">
 <meta name="twitter:image" content="http://yoursite.com/2019/08/20/图片的四种灰度化方式/%5Cimages%5Cpasted-18.png">
   
     <link rel="alternative" href="/atom.xml" title="BbiHH&#39;s blog" type="application/atom+xml">
@@ -177,8 +177,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="图片灰度化"><a href="#图片灰度化" class="headerlink" title="图片灰度化"></a>图片灰度化</h3><p>灰度化，在RGB模型中，如果R=G=B时，则彩色表示一种灰度颜色，其中R=G=B的值叫灰度值，因此，<strong>灰度图像每个像素只需一个字节存放灰度值（又称强度值、亮度值）</strong>，灰度范围为0-255。一般有分量法 最大值法平均值法加权平均法四种方法对彩色图像进行灰度化。灰度值大的像素点比较亮（像素值最大为255，为白色），反之比较暗（像素最下为0，为黑色）。</p>
+        <p>(原创)</p>
 <a id="more"></a>
+<h3 id="图片灰度化"><a href="#图片灰度化" class="headerlink" title="图片灰度化"></a>图片灰度化</h3><p>灰度化，在RGB模型中，如果R=G=B时，则彩色表示一种灰度颜色，其中R=G=B的值叫灰度值，因此，<strong>灰度图像每个像素只需一个字节存放灰度值（又称强度值、亮度值）</strong>，灰度范围为0-255。一般有分量法 最大值法平均值法加权平均法四种方法对彩色图像进行灰度化。灰度值大的像素点比较亮（像素值最大为255，为白色），反之比较暗（像素最下为0，为黑色）。</p>
 <blockquote>
 <p>现在大部分的彩色图像都是采用RGB颜色模式，处理图像的时候，要分别对RGB三种分量进行处理，实际上RGB并不能反映图像的形态特征，只是从光学的原理上进行颜色的调配。现在有很多其他的颜色模式，例如HSI模式，HSI是由色调，饱和度，亮度三个分量来表示颜色。HSI比RGB更符合人的视觉特性。但是HSI也是三通道，真正反映图像特征的变量是I，其他都是色彩的反映。所以我们经常要把图像弄成8位的灰度值图像直接进行处理，可以通过直方图，灰度变化，还有正交变换之类的进行处理。甚至经常把图像分割之后变成二值图像处理。</p>
 </blockquote>
@@ -332,11 +333,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2030/08/08/置顶/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/08/31/概率论与数理统计在人工智能领域的应用-转载/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          置顶
+          概率论与数理统计在人工智能领域的应用(转载)
         
       </div>
     </a>
@@ -504,15 +505,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">入门</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">图论</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">python编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -524,7 +525,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python编程</a>
+                <a href="javascript:void(0)" class="js-tag color3">入门</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">AI</a>
               </li>
             
             <div class="clearfix"></div>

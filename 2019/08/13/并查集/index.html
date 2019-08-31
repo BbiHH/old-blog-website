@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>并查集 | BbiHH&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="板子">
+  <meta name="description" content="(原创)">
 <meta name="keywords" content="板子">
 <meta property="og:type" content="article">
 <meta property="og:title" content="并查集">
 <meta property="og:url" content="http://yoursite.com/2019/08/13/并查集/index.html">
 <meta property="og:site_name" content="BbiHH&#39;s blog">
-<meta property="og:description" content="板子">
+<meta property="og:description" content="(原创)">
 <meta property="og:locale" content="Chinese">
-<meta property="og:updated_time" content="2019-08-20T08:36:02.000Z">
+<meta property="og:updated_time" content="2019-08-31T16:01:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="并查集">
-<meta name="twitter:description" content="板子">
+<meta name="twitter:description" content="(原创)">
   
     <link rel="alternative" href="/atom.xml" title="BbiHH&#39;s blog" type="application/atom+xml">
   
@@ -169,9 +169,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>板子</p>
+        <p>(原创)</p>
 <a id="more"></a>
-
+<p>板子</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> t[<span class="number">1007</span>];</span><br><span class="line"><span class="keyword">int</span> _rank[<span class="number">1007</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化父节点为自己</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func1</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">        t[i]=i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//寻找祖宗</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(t[i]==i)</span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> t[i]=Find(t[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//合并集合</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">unite</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    x = Find(x);</span><br><span class="line">    y = Find(y);</span><br><span class="line">    <span class="keyword">if</span>(x == y)</span><br><span class="line">    <span class="keyword">return</span> ;</span><br><span class="line">    <span class="comment">//深度大的为父节点</span></span><br><span class="line">    <span class="keyword">if</span>(_rank[x]&lt;_rank[y])</span><br><span class="line">        t[x]=y;</span><br><span class="line">    <span class="keyword">if</span>(_rank[x]&gt;_rank[y])</span><br><span class="line">        t[y]=x;</span><br><span class="line">    <span class="comment">//当深度相同时,随便哪个都可,当注意深度＋1</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        t[y]=x;</span><br><span class="line">        _rank[x]++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
@@ -458,15 +458,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">入门</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">图论</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">python编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -478,7 +478,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python编程</a>
+                <a href="javascript:void(0)" class="js-tag color3">入门</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">AI</a>
               </li>
             
             <div class="clearfix"></div>

@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>快速幂 | BbiHH&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在很多的ACM题中都会涉及到对数据快速运算的要求,快速运算在节省运行时间方面很多方面都能起到关键性的作用,学会快速幂也很用必要. 在求 逆元 的时候也会有经常用到.">
+  <meta name="description" content="(原创)">
 <meta name="keywords" content="模板">
 <meta property="og:type" content="article">
 <meta property="og:title" content="快速幂">
 <meta property="og:url" content="http://yoursite.com/2019/07/30/快速幂/index.html">
 <meta property="og:site_name" content="BbiHH&#39;s blog">
-<meta property="og:description" content="在很多的ACM题中都会涉及到对数据快速运算的要求,快速运算在节省运行时间方面很多方面都能起到关键性的作用,学会快速幂也很用必要. 在求 逆元 的时候也会有经常用到.">
+<meta property="og:description" content="(原创)">
 <meta property="og:locale" content="Chinese">
-<meta property="og:updated_time" content="2019-08-10T03:14:42.000Z">
+<meta property="og:updated_time" content="2019-08-31T16:02:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="快速幂">
-<meta name="twitter:description" content="在很多的ACM题中都会涉及到对数据快速运算的要求,快速运算在节省运行时间方面很多方面都能起到关键性的作用,学会快速幂也很用必要. 在求 逆元 的时候也会有经常用到.">
+<meta name="twitter:description" content="(原创)">
   
     <link rel="alternative" href="/atom.xml" title="BbiHH&#39;s blog" type="application/atom+xml">
   
@@ -169,10 +169,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在很多的ACM题中都会涉及到对数据快速运算的要求,快速运算在节省运行时间方面很多方面都能起到关键性的作用,学会快速幂也很用必要. 在求 <code>逆元</code> 的时候也会有经常用到.</p>
+        <p>(原创)</p>
 <a id="more"></a>
-
-
+<p>在很多的ACM题中都会涉及到对数据快速运算的要求,快速运算在节省运行时间方面很多方面都能起到关键性的作用,学会快速幂也很用必要. 在求 <code>逆元</code> 的时候也会有经常用到.</p>
 <h1 id="a-b-p-问题"><a href="#a-b-p-问题" class="headerlink" title="[a^b%p] 问题"></a>[a^b%p] 问题</h1><h2 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a>快速幂</h2><ul>
 <li><p>模板 </p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">求 a 的 b 次方对 p 取模的值</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pow</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans =  <span class="number">1</span> % p;</span><br><span class="line">    <span class="keyword">for</span>(b; b; b&gt;&gt;=<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(b&amp;<span class="number">1</span>) ans = (<span class="keyword">long</span> <span class="keyword">long</span> )ans * a % p;</span><br><span class="line">        a = (<span class="keyword">long</span> <span class="keyword">long</span>) a * a % p; <span class="comment">//权 </span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -473,15 +472,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">入门</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">图论</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">python编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -493,7 +492,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python编程</a>
+                <a href="javascript:void(0)" class="js-tag color3">入门</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">AI</a>
               </li>
             
             <div class="clearfix"></div>

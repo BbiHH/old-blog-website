@@ -8,21 +8,21 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>openCV(色彩通道的分离与合并) | BbiHH&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本篇来看一下opencv的两个函数 通道cv2.split 和 通道cv2.merge">
+  <meta name="description" content="(原创)">
 <meta name="keywords" content="openCV">
 <meta property="og:type" content="article">
 <meta property="og:title" content="openCV(色彩通道的分离与合并)">
 <meta property="og:url" content="http://yoursite.com/2019/08/18/openCV-色彩通道的分离与合并/index.html">
 <meta property="og:site_name" content="BbiHH&#39;s blog">
-<meta property="og:description" content="本篇来看一下opencv的两个函数 通道cv2.split 和 通道cv2.merge">
+<meta property="og:description" content="(原创)">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="http://yoursite.com/2019/08/18/openCV-色彩通道的分离与合并/%5Cimages%5Cpasted-15.png">
 <meta property="og:image" content="http://yoursite.com/2019/08/18/openCV-色彩通道的分离与合并/%5Cimages%5Cpasted-16.png">
 <meta property="og:image" content="http://yoursite.com/2019/08/18/openCV-色彩通道的分离与合并/%5Cimages%5Cpasted-17.png">
-<meta property="og:updated_time" content="2019-08-20T08:37:04.000Z">
+<meta property="og:updated_time" content="2019-08-31T16:00:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="openCV(色彩通道的分离与合并)">
-<meta name="twitter:description" content="本篇来看一下opencv的两个函数 通道cv2.split 和 通道cv2.merge">
+<meta name="twitter:description" content="(原创)">
 <meta name="twitter:image" content="http://yoursite.com/2019/08/18/openCV-色彩通道的分离与合并/%5Cimages%5Cpasted-15.png">
   
     <link rel="alternative" href="/atom.xml" title="BbiHH&#39;s blog" type="application/atom+xml">
@@ -173,9 +173,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本篇来看一下opencv的两个函数 <strong>通道cv2.split</strong> 和 <strong>通道cv2.merge</strong></p>
+        <p>(原创)</p>
 <a id="more"></a>
-
+<p>本篇来看一下opencv的两个函数 <strong>通道cv2.split</strong> 和 <strong>通道cv2.merge</strong></p>
 <h2 id="操作像素"><a href="#操作像素" class="headerlink" title="操作像素"></a>操作像素</h2><p>直接操作像素来分离通道得到单通道的灰度图</p>
 <p>首先了解一下python中获取的图片信息 : 一张图片由[h*w]个像素构成，每个像素点有组成其颜色的参数，事实上就是BGR三通道的分量值 。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">"D:\图片\Saved Pictures\qianxun.jpg"</span>,cv2.IMREAD_COLOR)</span><br><span class="line"></span><br><span class="line"><span class="comment">#直接获取图片中通道的值</span></span><br><span class="line">b = img[:,:,<span class="number">0</span>]</span><br><span class="line">g = img[:,:,<span class="number">1</span>]</span><br><span class="line">r = img[:,:,<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">"blue"</span>,b)</span><br><span class="line">cv2.imshow(<span class="string">"green"</span>,g)</span><br><span class="line">cv2.imshow(<span class="string">"red"</span>,r)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
@@ -482,15 +482,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">入门</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">图论</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">python编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -502,7 +502,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python编程</a>
+                <a href="javascript:void(0)" class="js-tag color3">入门</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">AI</a>
               </li>
             
             <div class="clearfix"></div>
