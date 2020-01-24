@@ -211,6 +211,214 @@
 
 
   
+    <article id="post-SVM练习（python实现）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        >  
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/23/SVM练习（python实现）/">SVM练习（python实现）</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/23/SVM练习（python实现）/" class="archive-article-date">
+  	<time datetime="2020-01-23T09:44:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>(‘’’)<br>import numpy as np<br>import scipy.io as sio<br>import pandas as pd   #一个强大的分析结构化数据的工具集<br>import matplotlib.pyplot as plt<br>import sklearn.svm as svm</p>
+<p>mat = sio.loadmat(‘./data/ex6data1.mat’)<br>print(mat.keys())<br>data = pd.DataFrame(mat.get(‘X’),columns=[‘X1’,’X2’])<br>data[‘y’] = mat.get(‘y’)<br>print(data.head())</p>
+<p>fig , ax = plt.subplots(figsize = (8,6))<br>ax.scatter(data[‘X1’],data[‘X2’],s =50,c = data[‘y’],cmap=’Reds’)<br>ax.set_title(‘Raw data’)<br>ax.set_xlabel(‘X1’)<br>ax.set_ylabel(‘X2’)<br>plt.show()</p>
+<p>svc1 = svm.LinearSVC(C=1,loss=’hinge’)<br>svc1.fit(data[[‘X1’,’X2’]],data[‘y’])<br>svc1.score(data[[‘X1’,’X2’]],data[‘y’])</p>
+<p>data[‘SVM1 Confidence’] = svc1.decision_function(data[[‘X1’,’X2’]])<br>fig,ax = plt.subplots(figsize = (8,6))<br>ax.scatter(data[‘X1’],data[‘X2’],s=50,c=data[‘SVM1 Confidence’],cmap=’RdBu’)<br>ax.set_title(‘SVM(C=1) Decision Confidence’)<br>plt.show()</p>
+<p>svc100 =svm.LinearSVC(C=100, loss=’hinge’)<br>svc100.fit(data[[‘X1’, ‘X2’]], data[‘y’])<br>svc100.score(data[[‘X1’, ‘X2’]], data[‘y’])</p>
+<p>data[‘SVM100 Confidence’] = svc100.decision_function(data[[‘X1’, ‘X2’]])<br>fig, ax = plt.subplots(figsize=(8,6))<br>ax.scatter(data[‘X1’], data[‘X2’], s=50, c=data[‘SVM100 Confidence’], cmap=’RdBu’)<br>ax.set_title(‘SVM (C=100) Decision Confidence’)<br>plt.show()</p>
+<p>print(data.head())<br>(‘’’)</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/23/SVM练习（python实现）/">展开全文 >></a>
+        </p>
+      
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <article id="post-支持向量机-SVM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        >  
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/23/支持向量机-SVM/">支持向量机(SVM)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/23/支持向量机-SVM/" class="archive-article-date">
+  	<time datetime="2020-01-23T08:16:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="支持向量机（Support-vector-machines）"><a href="#支持向量机（Support-vector-machines）" class="headerlink" title="支持向量机（Support vector machines）"></a>支持向量机（Support vector machines）</h1><h2 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h2><p>支持向量机（support vector machines）是一种二分类模型，它的目的是寻找一个超平面来对样本进行分割，分割的原则是间隔最大化，最终转化为一个凸二次规划问题来求解。由简至繁的模型包括：</p>
+<ul>
+<li>当训练样本线性可分时，通过硬间隔最大化，学习一个线性可分支持向量机；</li>
+<li>当训练样本近似线性可分时，通过软间隔最大化，学习一个线性支持向量机；</li>
+<li>当训练样本线性不可分时，通过核技巧和软间隔最大化，学习一个非线性支持向量机；</li>
+</ul>
+<p>与逻辑回归和神经网络相比，支持向量机，或者简称SVM，在学习复杂的非线性方程时提供了一种更为清晰，更加强大的方式。</p>
+<h2 id="二、SVM-与-Logistic-regression"><a href="#二、SVM-与-Logistic-regression" class="headerlink" title="二、SVM 与 Logistic regression"></a>二、SVM 与 Logistic regression</h2><p>逻辑回归预测函数：</p>
+<p><img src="/images/pasted-64.png" alt="upload successful"></p>
+<p>现在考虑下我们想要逻辑回归做什么：<br><br>当 y=1 时， 我们需要预测函数 h(x)≈1,  需要 Z &gt;= 0<br><br>当 y=0 时， 我们需要预测函数 h(x)≈0,  需要 Z &lt;= 0<br><br>则对应的代价函数(z = theta.T * x)</p>
+<p><img src="/images/pasted-65.png" alt="upload successful"></p>
+<p>当y值不同时，J(z)函数的曲线可大致拟合成一条折线cost(z)。将逻辑回归中J(z)替换为拟合的这条折线cost(z)，我们得到一个新的最小化函数:</p>
+<p><img src="/images/pasted-66.png" alt="upload successful"></p>
+<p>加入正则项，再让其在逻辑回归代价函数上面稍加变形，则得到了SVM的函数:</p>
+<p><img src="/images/pasted-67.png" alt="upload successful"></p>
+<p>最后有别于逻辑回归输出的概率。在这里，我们的代价函数，当最小化代价函数，获得参数theta时，支持向量机所做的是它来直接预测y的值等于1，还是等于0。</p>
+<h2 id="三、SVM"><a href="#三、SVM" class="headerlink" title="三、SVM"></a>三、SVM</h2><p>人们有时将支持向量机看作是大间距分类器。在训练得到最小化的theta过程中，先忽略参数C和正则项,则theta的变化方向是使得</p>
+<pre><code>当 y=1 时, z&gt;= 1 ，当 y=0 时, z&lt;=-1  （而不是逻辑回归中的0)</code></pre><p>   <img src="/images/pasted-68.png" alt="upload successful"></p>
+<p>如果你考察这样一个数据集，其中有正样本，也有负样本，可以看到这个数据集是线性可分的。我的意思是，存在一条直线把正负样本分开。当然有多条不同的直线，可以把正样本和负样本完全分开。</p>
+<p>   <img src="/images/pasted-69.png" alt="upload successful"><br>   <img src="/images/pasted-70.png" alt="upload successful"></p>
+<p>这些决策边界看起来都不是特别好的选择，支持向量机将会选择这个黑色的决策边界，相较于之前我用粉色或者绿色画的决策界。这条黑色的看起来好得多，黑线看起来是更稳健的决策界。在分离正样本和负样本上它显得的更好。数学上来讲，这是什么意思呢？这条黑线有更大的距离，这个距离叫做<strong>间距(margin)</strong>。</p>
+<p>   <img src="/images/pasted-71.png" alt="upload successful"></p>
+<p>当画出这两条额外的蓝线，我们看到黑色的决策界和训练样本之间有更大的最短距离。然而粉线和蓝线离训练样本就非常近，在分离样本的时候就会比黑线表现差。因此，这个距离叫做支持向量机的间距，而这是支持向量机具有鲁棒性的原因，因为它努力用一个最大间距来分离样本。因此支持向量机有时被称为<strong>大间距分类器</strong>。</p>
+<h4 id="参数C对划分的影响"><a href="#参数C对划分的影响" class="headerlink" title="参数C对划分的影响:"></a>参数C对划分的影响:</h4><ul>
+<li>C较大时，可能会导致过拟合,高方差</li>
+<li>C较小时，可能会导致欠拟合,高偏差</li>
+</ul>
+<p>例如：当 C较小时会得到黑线，而增大C使得C非常大时，会得到粉色线</p>
+<p><img src="/images/pasted-72.png" alt="upload successful"></p>
+<p>关于SVM如何做到大间距分类这里先不解释。</p>
+<h2 id="四、核函数"><a href="#四、核函数" class="headerlink" title="四、核函数"></a>四、核函数</h2><p>许多时候，我们面临的分类问题并不只是线性分类，还会遇到很多无法通过直线进行分隔的分类情况：</p>
+<p><img src="/images/pasted-73.png" alt="upload successful"></p>
+<p>我们可以用一系列的新的特征f来替换模型中的每一项。将f代替x来对进行分类。而这个代替的变化函数则叫做<strong>核函数</strong>。例如：</p>
+<p><img src="/images/pasted-74.png" alt="upload successful"></p>
+<p>这是一个高斯核函数(Gaussian Kernel)。其中l为landmark，为数据中的地标，使用数据与地标的距离大小计算用来取新的特征，距离越大获得的f值则越小，当距离为0时，f达到最大为1。例如在坐标中取3个地标:</p>
+<p><img src="/images/pasted-75.png" alt="upload successful"></p>
+<p> 这样得到的新特征与地标相关系，关联到数据与地标间的欧式距离，而训练出的theta也会通过这个核函数得到复杂的拟合边界。</p>
+<p> 其中高斯核函数中的参数 sigma 为用户定义的到达率，为核函数跌至0的速率参数</p>
+<p><img src="/images/pasted-76.png" alt="upload successful"></p>
+<p>一般实现核函数SVM时使用的地标为整个数据集，即如果训练集有m个样本，则选取m个地标。</p>
+<p><img src="/images/pasted-77.png" alt="upload successful"></p>
+<h4 id="两个参数-C-和-sigma-的影响"><a href="#两个参数-C-和-sigma-的影响" class="headerlink" title="两个参数 C 和 sigma 的影响"></a>两个参数 C 和 sigma 的影响</h4><ul>
+<li><p>C较大时，可能会导致过拟合,高方差</p>
+</li>
+<li><p>C较小时，可能会导致欠拟合,高偏差</p>
+</li>
+<li><p>sigma 较大时，可能导致低方差，高偏差 （欠拟合）</p>
+</li>
+<li><p>sigma 较小时，可能导致低偏差，高方差 （过拟合）</p>
+</li>
+</ul>
+<p>除了高斯核函数外，还有很多其他的核函数，这里不一一介绍了。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">AI大数据</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/机器学习专栏//" class="article-tag-list-link color2">机器学习专栏</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/23/支持向量机-SVM/">展开全文 >></a>
+        </p>
+      
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
     <article id="post-概率论复习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -805,193 +1013,9 @@
 
 
   
-    <article id="post-图片的四种灰度化方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        >  
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/20/图片的四种灰度化方式/">图片的四种灰度化方式</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/20/图片的四种灰度化方式/" class="archive-article-date">
-  	<time datetime="2019-08-20T07:07:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>(原创)</p>
-        
-          <a class="article-more-a" href="/2019/08/20/图片的四种灰度化方式/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Naoqi机器人</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/openCV//" class="article-tag-list-link color2">openCV</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/openCV/图片变化//" class="article-tag-list-link color5">图片变化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/20/图片的四种灰度化方式/">展开全文 >></a>
-        </p>
-      
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <article id="post-openCV-色彩通道的分离与合并" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        >  
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/18/openCV-色彩通道的分离与合并/">openCV(色彩通道的分离与合并)</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/18/openCV-色彩通道的分离与合并/" class="archive-article-date">
-  	<time datetime="2019-08-18T03:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>(原创)</p>
-        
-          <a class="article-more-a" href="/2019/08/18/openCV-色彩通道的分离与合并/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Naoqi机器人</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/openCV//" class="article-tag-list-link color2">openCV</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/openCV/图片变化//" class="article-tag-list-link color5">图片变化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/18/openCV-色彩通道的分离与合并/">展开全文 >></a>
-        </p>
-      
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1106,7 +1130,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">AI大数据</a>
+                <a href="javascript:void(0)" class="js-tag color4">Naoqi机器人</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1114,7 +1138,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Naoqi机器人</a>
+                <a href="javascript:void(0)" class="js-tag color1">AI大数据</a>
               </li>
             
             <div class="clearfix"></div>
